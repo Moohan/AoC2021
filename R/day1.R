@@ -4,12 +4,8 @@
 #'
 #' @return
 #' @export
-flag_increase <- function(depth_input, create_tibble = TRUE) {
-  if (create_tibble) {
-    data <- tibble::tibble(depth = depth_input)
-  } else {
-    data <- depth_input
-  }
+flag_increase <- function(depth_input) {
+  data <- tibble::tibble(depth = depth_input)
 
   data %>%
     dplyr::mutate(
@@ -33,7 +29,7 @@ count_increases <- function(data) {
 }
 
 # Part 1
-readr::read_lines("data/day1_input.txt") %>%
+readr::read_lines(aoc_get_data(1)) %>%
   readr::parse_integer() %>%
   flag_increase() %>%
   count_increases()
@@ -55,7 +51,7 @@ rolling_sum <- function(depth_input, n) {
 }
 
 
-readr::read_lines("data/day1_input.txt") %>%
+readr::read_lines(aoc_get_data(1)) %>%
   readr::parse_integer() %>%
   rolling_sum(n = 2) %>%
   flag_increase() %>%
