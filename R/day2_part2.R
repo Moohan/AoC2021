@@ -1,4 +1,4 @@
-#postion is c(horizontal, depth, aim)
+# postion is c(horizontal, depth, aim)
 
 aim_forward <- function(position, n) {
   position[1] <- position[1] + n
@@ -21,17 +21,17 @@ aim_down <- function(position, n) {
 
 aim_move <- function(position, direction, n) {
   switch(direction,
-         "forward" = aim_forward(position, n),
-         "up" = aim_up(position, n),
-         "down" = aim_down(position, n))
+    "forward" = aim_forward(position, n),
+    "up" = aim_up(position, n),
+    "down" = aim_down(position, n)
+  )
 }
 
 
 apply_aim_moves <- function(position, input) {
-
   new_position <- position
 
-  input <- process_input(input)
+  input <- process_input_day2(input)
 
   for (i in input) {
     new_position <- aim_move(new_position, i[[1]], i[[2]])
@@ -41,13 +41,9 @@ apply_aim_moves <- function(position, input) {
 }
 
 part_2_answer <- function(position, input) {
-
   new_position <- apply_aim_moves(position, input)
 
   answer <- new_position[1] * new_position[2]
 
   return(answer)
 }
-
-
-

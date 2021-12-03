@@ -19,7 +19,9 @@ aoc_build_url <- function(day, year = 2021) {
 #'
 #' @return
 #' @export
-aoc_get_data <- function(day, session_cookie = keyring::key_get("aoc"), year = 2021) {
+aoc_get_data <- function(day,
+                         session_cookie = keyring::key_get("aoc"),
+                         year = 2021) {
   aoc_url <- aoc_build_url(day, year)
 
   day_string <- stringr::str_pad(day, width = 2, side = "left", pad = "0")
